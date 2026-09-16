@@ -6,6 +6,7 @@ import TaskForm from "./components/TaskForm";
 function App(){
   const [tasks, setTasks] = useState([])
   const [editingTask, setEditingTask] = useState(null)
+  const [filter, setFilter] = useState('all')
 
   useEffect(()=>{
     const fetchTasks = async() => {
@@ -44,11 +45,22 @@ function App(){
     setEditingTask(task)
   }
 
+  const filteredTasks = tasks.filter(task => {
+    if(filter === 'pending') return !task.completed
+    if(filter === 'completed') return task.completed
+    return true
+  })
+
   return(
     <div className="max-w-2xl mx-auto p-6">
       <h1 className="text-2xl font-bold mb-4">TaskFlow</h1>
       <TaskForm onSubmit={handleFormSubmit} editingTask={editingTask} />
-      <TaskList tasks={tasks} onDelete={handleDelete} onToggleComplete={handleToggleComplete} onEdit={handleEditClick} />
+      <div className="flex gap-2 mb-4">
+        <button onClick={() => setFilter('all')} className="border rounded px-3 py-1">All</button>
+        <button onClick={() => setFilter('pending')} className="border rounded px-3 py-1">Pending</button>
+        <button onClick={() => setFilter('completed')} className="border rounded px-3 py-1">Completed</button>
+      </div>
+      <TaskList tasks={filteredTasks} onDelete={handleDelete} onToggleComplete={handleToggleComplete} onEdit={handleEditClick} />
     </div>
   )
 }

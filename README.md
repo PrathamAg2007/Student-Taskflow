@@ -29,8 +29,12 @@ Two separate apps in one repo — `frontend/` and `backend/` — talking over a 
 ## Running it locally
 Check `backend/README.md` and `frontend/README.md` — both need to be running at the same time for it to actually work.
 
-## AI tools used
-Used Claude and Antigravity throughout — not to generate the app blind, but as a build partner. Claude helped with architecture decisions, debugging (CORS, env vars, deployment issues), and general direction. Antigravity handled the visual styling pass, helped wire the auth flow into the frontend (login/register state, protected routes, token handling), and built out the date-grouping feature. All the core logic — CRUD, state management, API integration — I wrote and understand myself, and can walk through any of it.
+## AI Tools Used
+I built this myself — the architecture, the CRUD logic, the auth flow, connecting frontend to backend, deployment, all of it. I can walk through any part of this code and explain why it's built the way it is.
+
+Where I used AI: Claude helped me think through architecture decisions, debug issues as they came up (CORS, environment variables, deployment configuration), and reason through concepts I was rusty on. Antigravity helped with the visual styling pass and some of the auth wiring on the frontend, and helped me build the date-grouping feature — but the surrounding logic, and understanding of what it's doing, is mine.
+
+Used them the way I'd use a senior dev pairing with me — not to generate the app and submit it blind.
 
 ## Known limitations
 - No "cancel edit" button once you click Edit on a task

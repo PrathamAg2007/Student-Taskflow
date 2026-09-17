@@ -1,4 +1,7 @@
-const URL = `${import.meta.env.VITE_API_URL}/api/v1/tasks`
+const TASKS_URL = `${import.meta.env.VITE_API_URL}/api/v1/tasks`
+const AUTH_URL = `${import.meta.env.VITE_API_URL}/api/v1/auth`
+
+const getToken = () => localStorage.getItem('token') //helper func to avoid repetition
 
 const handleResponse = async (res) => {
     if(!res.ok){
@@ -8,29 +11,53 @@ const handleResponse = async (res) => {
     return res.json()
 }
 
+const register = async (userData) => {
+    const res = await fetch(`${AUTH_URL}/register`, {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify(userData)
+    })
+    return handleResponse(res)
+}
+
+const login = async (userData) => {
+    const res = await fetch(`${AUTH_URL}/login`, {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify(userData)
+    })
+    return handleResponse(res)
+}
+
 const getTasks = async () => {
-    const res = await fetch(URL)
+    const token = getToken()
+    const res = await fetch(TASKS_URL, {
+        headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}
+    })
     return handleResponse(res)
 }
 const createTask = async (data) => {
-    const res = await fetch(URL, {
+    const token = getToken()
+    const res = await fetch(TASKS_URL, {
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
+        headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`},
         body: JSON.stringify(data)
     })
     return handleResponse(res)
 }
 const updateTask = async (id, data) => {
-    const res = await fetch(`${URL}/${id}`, {
+    const token = getToken()
+    const res = await fetch(`${TASKS_URL}/${id}`, {
         method: 'PATCH',
-        headers: {'Content-Type': 'application/json'},
+        headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`},
         body: JSON.stringify(data)
     })
     return handleResponse(res)
 }
 const deleteTask = async (id) => {
-    const res = await fetch(`${URL}/${id}`, {method: 'DELETE'})
+    const token = getToken()
+    const res = await fetch(`${TASKS_URL}/${id}`, {method: 'DELETE', headers: {'Authorization': `Bearer ${token}`}})
     return handleResponse(res)
 }
 
-export {getTasks, updateTask, createTask, deleteTask}
+export {register, login, getTasks, updateTask, createTask, deleteTask}

@@ -1,19 +1,19 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 export default function TaskForm({ onSubmit, editingTask }) {
-    const [title, setTitle] = useState('')
-    const [description, setDescription] = useState('')
-    const [priority, setPriority] = useState('medium')
-    const [dueDate, setDueDate] = useState('')
+    const [title, setTitle] = useState(editingTask?.title || '')
+    const [description, setDescription] = useState(editingTask?.description || '')
+    const [priority, setPriority] = useState(editingTask?.priority || 'medium')
+    const [dueDate, setDueDate] = useState(editingTask?.dueDate ? editingTask.dueDate.slice(0, 10) : '')
+    const [prevTask, setPrevTask] = useState(editingTask)
 
-    useEffect(() => {
-        if (editingTask) {
-            setTitle(editingTask.title)
-            setDescription(editingTask.description || '')
-            setPriority(editingTask.priority)
-            setDueDate(editingTask.dueDate ? editingTask.dueDate.slice(0, 10) : '')
-        }
-    }, [editingTask])
+    if (editingTask !== prevTask) {
+        setPrevTask(editingTask)
+        setTitle(editingTask ? editingTask.title : '')
+        setDescription(editingTask ? (editingTask.description || '') : '')
+        setPriority(editingTask ? editingTask.priority : 'medium')
+        setDueDate(editingTask && editingTask.dueDate ? editingTask.dueDate.slice(0, 10) : '')
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault()

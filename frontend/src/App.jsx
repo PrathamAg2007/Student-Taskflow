@@ -51,6 +51,25 @@ function App(){
     return true
   })
 
+  const groupedTasks = filteredTasks.reduce((groups, task) => {
+    const key = task.dueDate ? task.dueDate.slice(0, 10) : 'no-date'
+    if (!groups[key]) groups[key] = []
+    groups[key].push(task)
+    return groups
+  }, {})
+
+  const sortedGroups = Object.keys(groupedTasks).sort((a, b) => {
+    if (a === 'no-date') return 1
+    if (b === 'no-date') return -1
+    return a.localeCompare(b)
+  }).map(key => ({
+    dateKey: key,
+    label: key === 'no-date'
+      ? 'No due date'
+      : new Date(key).toLocaleDateString('en-GB', { day: 'numeric', month: 'long' }),
+    tasks: groupedTasks[key]
+  }))
+
   return(
     <div className="max-w-2xl mx-auto px-4 py-8 sm:py-12 sm:px-6">
       <h1 className="text-xl sm:text-2xl font-semibold tracking-tight text-[#1F2937] mb-6">TaskFlow</h1>
@@ -87,7 +106,7 @@ function App(){
           Completed
         </button>
       </div>
-      <TaskList tasks={filteredTasks} onDelete={handleDelete} onToggleComplete={handleToggleComplete} onEdit={handleEditClick} />
+      <TaskList groups={sortedGroups} onDelete={handleDelete} onToggleComplete={handleToggleComplete} onEdit={handleEditClick} />
     </div>
   )
 }

@@ -25,9 +25,9 @@ export default function Login({ onLogin }) {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="bg-white dark:bg-[#292524] border border-[#E5E1D8] dark:border-[#3D3835] rounded-xl p-4 sm:p-5 mb-6 shadow-xs flex flex-col gap-3.5 transition-colors duration-150">
-            <h2 className="font-heading text-lg font-bold text-[#1F2937] dark:text-[#F5F5F4] mb-2">Login</h2>
-            {error && <p className="text-red-500 text-sm">{error}</p>}
+        <form onSubmit={handleSubmit} className="bg-white dark:bg-[#18181B] border border-[#E2E2E0] dark:border-[#2A2A2D] rounded-lg p-4 sm:p-5 mb-6 shadow-xs flex flex-col gap-3.5 transition-colors duration-150">
+            <h2 className="font-heading text-lg font-bold text-[#111113] dark:text-[#F2F0EB] mb-2">Login</h2>
+            {error && <p className="text-[#FF3B30] text-xs sm:text-sm font-medium">{error}</p>}
             <input
                 type="email"
                 placeholder="Your email"
@@ -35,7 +35,7 @@ export default function Login({ onLogin }) {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 disabled={loading}
-                className="w-full px-3.5 py-2.5 text-sm text-[#1F2937] dark:text-[#F5F5F4] placeholder-[#9CA3AF] dark:placeholder-[#78716C] bg-[#FAF7F2]/50 dark:bg-[#1C1917]/50 border border-[#E5E1D8] dark:border-[#3D3835] rounded-lg focus:outline-none focus:border-[#B5541E] focus:ring-1 focus:ring-[#B5541E]/20 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full px-3.5 py-2.5 text-sm text-[#111113] dark:text-[#F2F0EB] placeholder-[#8E8E93] dark:placeholder-[#71717A] bg-[#F7F7F5] dark:bg-[#0B0B0C] border border-[#E2E2E0] dark:border-[#2A2A2D] rounded-md focus:outline-none focus:border-[#FF3B30] focus:ring-1 focus:ring-[#FF3B30]/20 transition-colors duration-150 disabled:opacity-50 disabled:cursor-not-allowed"
             />
             <div className="relative">
                 <input
@@ -45,12 +45,12 @@ export default function Login({ onLogin }) {
                     onChange={(e) => setPassword(e.target.value)}
                     required
                     disabled={loading}
-                    className="w-full px-3.5 py-2.5 text-sm text-[#1F2937] dark:text-[#F5F5F4] placeholder-[#9CA3AF] dark:placeholder-[#78716C] bg-[#FAF7F2]/50 dark:bg-[#1C1917]/50 border border-[#E5E1D8] dark:border-[#3D3835] rounded-lg focus:outline-none focus:border-[#B5541E] focus:ring-1 focus:ring-[#B5541E]/20 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full px-3.5 py-2.5 text-sm text-[#111113] dark:text-[#F2F0EB] placeholder-[#8E8E93] dark:placeholder-[#71717A] bg-[#F7F7F5] dark:bg-[#0B0B0C] border border-[#E2E2E0] dark:border-[#2A2A2D] rounded-md focus:outline-none focus:border-[#FF3B30] focus:ring-1 focus:ring-[#FF3B30]/20 transition-colors duration-150 disabled:opacity-50 disabled:cursor-not-allowed"
                 />
                 <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[#9CA3AF] dark:text-[#78716C] hover:text-[#B5541E] transition-colors"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[#8E8E93] dark:text-[#71717A] hover:text-[#FF3B30] dark:hover:text-[#FF3B30] transition-colors cursor-pointer"
                     aria-label={showPassword ? "Hide password" : "Show password"}
                 >
                     {showPassword ? (
@@ -66,7 +66,7 @@ export default function Login({ onLogin }) {
                 </button>
             </div>
             <button type="submit" disabled={loading}
-                className="w-full sm:w-auto sm:self-end px-5 py-2 text-sm font-medium text-white bg-[#1F2937] dark:bg-[#E7E5E4] dark:text-[#1C1917] hover:bg-[#B5541E] dark:hover:bg-[#B5541E] dark:hover:text-white rounded-lg shadow-xs transition-all duration-150 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full sm:w-auto sm:self-end px-5 py-2 text-sm font-semibold text-white bg-[#FF3B30] hover:bg-[#E03227] active:bg-[#C92920] rounded-md shadow-xs transition-colors duration-150 ease-out cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#FF3B30]/40 disabled:opacity-50 disabled:cursor-not-allowed"
             >
                 {loading ? 'Logging in...' : 'Login'}
             </button>

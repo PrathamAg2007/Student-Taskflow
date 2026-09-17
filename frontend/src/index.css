@@ -10,64 +10,68 @@
 body {
   margin: 0;
   min-height: 100vh;
-
-  background-color: #faf7f2;
-
-  background-image:
-    radial-gradient(
-      circle at 5% 50%,
-      rgba(190, 150, 70, 0.07),
-      transparent 45%
-    ),
-    radial-gradient(
-      circle at 95% 50%,
-      rgba(65, 48, 36, 0.08),
-      transparent 50%
-    ),
-    linear-gradient(
-      90deg,
-      #faf7f2 0%,
-      #f6efe5 35%,
-      #e8dac6 70%,
-      #c9b49a 100%
-    );
-
-  color: #1f2937;
+  background-color: #F7F7F5;
+  color: #111113;
   font-family: 'Inter', sans-serif;
-
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  transition:
-    background-color 150ms ease-out,
-    color 150ms ease-out;
+  transition: background-color 150ms ease-out, color 150ms ease-out;
 }
 
 .dark body {
-  background-color: #1c1917;
-
-  background-image:
-    radial-gradient(
-      circle at 5% 50%,
-      rgba(166, 126, 55, 0.06),
-      transparent 45%
-    ),
-    radial-gradient(
-      circle at 95% 50%,
-      rgba(35, 26, 20, 0.14),
-      transparent 50%
-    ),
-    linear-gradient(
-      90deg,
-      #1c1917 0%,
-      #211d19 35%,
-      #2b241e 70%,
-      #33291f 100%
-    );
-
-  color: #f5f5f4;
+  background-color: #0B0B0C;
+  color: #F2F0EB;
 }
 
 .font-heading {
   font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Custom Checkbox - Lime Accent Moment (#D9FF3D) */
+.custom-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1.125rem;
+  height: 1.125rem;
+  border-radius: 0.25rem;
+  border: 1.5px solid #D1D1CE;
+  background-color: #FFFFFF;
+  cursor: pointer;
+  display: grid;
+  place-content: center;
+  transition: all 150ms ease-out;
+  outline: none;
+}
+
+.dark .custom-checkbox {
+  border-color: #2A2A2D;
+  background-color: #0B0B0C;
+}
+
+.custom-checkbox:hover {
+  border-color: #D9FF3D;
+  box-shadow: 0 0 8px rgba(217, 255, 61, 0.25);
+}
+
+.dark .custom-checkbox:hover {
+  border-color: #D9FF3D;
+  box-shadow: 0 0 10px rgba(217, 255, 61, 0.2);
+}
+
+.custom-checkbox:checked {
+  background-color: #D9FF3D;
+  border-color: #D9FF3D;
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%230B0B0C' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.dark .custom-checkbox:checked {
+  background-color: #D9FF3D;
+  border-color: #D9FF3D;
+}
+
+.custom-checkbox:focus-visible {
+  box-shadow: 0 0 0 2px rgba(217, 255, 61, 0.45);
 }

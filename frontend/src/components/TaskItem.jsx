@@ -1,48 +1,48 @@
 export default function TaskItem({task, onDelete, onToggleComplete, onEdit}){
     return(
-        <div className={`group border border-l-[3px] border-[#E5E1D8] dark:border-[#3D3835] ${
+        <div className={`group border border-l-[3px] border-[#E2E2E0] dark:border-[#2A2A2D] ${
             task.priority === 'high'
-                ? 'border-l-[#B5541E]'
+                ? 'border-l-[#FF3B30]'
                 : task.priority === 'medium'
-                ? 'border-l-[#C99A2E]'
-                : 'border-l-[#6B8F71]'
-        } rounded-xl p-4 sm:p-5 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(31,41,55,0.06)] dark:hover:shadow-[0_4px_12px_rgba(0,0,0,0.3)] hover:border-[#D6D0C4] dark:hover:border-[#524B47] ${
+                ? 'border-l-[#FFB020]'
+                : 'border-l-[#3ED598]'
+        } rounded-lg p-4 sm:p-5 transition-all duration-150 ease-out hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_4px_20px_rgba(0,0,0,0.4)] hover:border-[#8E8E93]/60 dark:hover:border-[#3E3E42] ${
             task.completed
-                ? 'bg-[#FAF7F2]/60 dark:bg-[#1C1917]/60 border-[#E5E1D8]/60 dark:border-[#3D3835]/60 opacity-50 hover:translate-y-0'
-                : 'bg-white dark:bg-[#292524] shadow-xs'
+                ? 'bg-[#F7F7F5]/80 dark:bg-[#121214] border-[#E2E2E0]/60 dark:border-[#2A2A2D]/60 opacity-55 hover:translate-y-0'
+                : 'bg-white dark:bg-[#18181B] shadow-xs'
         }`}>
             <div className="grid grid-cols-[auto_1fr] sm:grid-cols-[auto_1fr_auto] gap-x-3.5 gap-y-1.5 items-start">
                 <input
                     type="checkbox"
                     checked={task.completed}
                     onChange={()=>onToggleComplete(task._id, !task.completed)}
-                    className="mt-1 h-4 w-4 rounded border-[#E5E1D8] dark:border-[#524B47] text-[#1F2937] dark:text-[#FAF7F2] accent-[#1F2937] dark:accent-[#B5541E] cursor-pointer transition-all duration-150 ease-out focus:ring-0 focus:ring-offset-0 active:scale-95"
+                    className="custom-checkbox mt-1 shrink-0"
                 />
-                <p className={`font-heading text-sm sm:text-[15px] font-medium leading-normal break-words transition-all duration-200 ease-out ${task.completed ? 'line-through text-[#9CA3AF] dark:text-[#78716C]' : 'text-[#1F2937] dark:text-[#F5F5F4]'}`}>
+                <p className={`font-heading text-sm sm:text-[15px] font-medium leading-normal break-words transition-colors duration-150 ${task.completed ? 'line-through text-[#8E8E93] dark:text-[#71717A]' : 'text-[#111113] dark:text-[#F2F0EB]'}`}>
                     {task.title}
-                    <span className={`inline-flex items-center text-xs font-normal tracking-wide px-2 py-0.5 rounded-md ml-2 align-middle border no-underline transition-colors duration-150 ${
+                    <span className={`inline-flex items-center text-xs font-medium tracking-wide px-2 py-0.5 rounded ml-2 align-middle border no-underline transition-colors duration-150 ${
                         task.priority === 'high'
-                            ? 'bg-[#B5541E]/10 text-[#B5541E] border-[#B5541E]/25 dark:bg-[#B5541E]/20 dark:text-[#D97036] dark:border-[#B5541E]/40'
+                            ? 'bg-[#FF3B30]/10 text-[#FF3B30] border-[#FF3B30]/30 dark:bg-[#FF3B30]/15 dark:text-[#FF453A] dark:border-[#FF3B30]/40'
                             : task.priority === 'medium'
-                            ? 'bg-[#C99A2E]/10 text-[#C99A2E] border-[#C99A2E]/25 dark:bg-[#C99A2E]/20 dark:text-[#E0B24A] dark:border-[#C99A2E]/40'
-                            : 'bg-[#6B8F71]/10 text-[#6B8F71] border-[#6B8F71]/25 dark:bg-[#6B8F71]/20 dark:text-[#8CB092] dark:border-[#6B8F71]/40'
+                            ? 'bg-[#FFB020]/10 text-[#D98E00] border-[#FFB020]/30 dark:bg-[#FFB020]/15 dark:text-[#FFB020] dark:border-[#FFB020]/40'
+                            : 'bg-[#3ED598]/10 text-[#1BA870] border-[#3ED598]/30 dark:bg-[#3ED598]/15 dark:text-[#3ED598] dark:border-[#3ED598]/40'
                     }`}>
                         ({task.priority})
                     </span>
                 </p>
-                <p className="col-start-2 text-xs sm:text-sm text-[#9CA3AF] dark:text-[#A8A29E] leading-relaxed break-words empty:hidden transition-colors duration-150">
+                <p className="col-start-2 text-xs sm:text-sm text-[#71717A] dark:text-[#8E8E93] leading-relaxed break-words empty:hidden transition-colors duration-150">
                     {task.description}
                 </p>
                 <div className="col-start-2 sm:col-start-3 sm:row-start-1 sm:row-span-2 sm:self-center flex items-center gap-2 mt-1 sm:mt-0">
                     <button
                         onClick={()=>onEdit(task)}
-                        className="px-2.5 py-1 text-xs font-medium text-[#1F2937] dark:text-[#E7E5E4] hover:text-[#1F2937] bg-white dark:bg-[#292524] hover:bg-[#FAF7F2] dark:hover:bg-[#322E2B] border border-[#E5E1D8] dark:border-[#3D3835] hover:border-[#9CA3AF] dark:hover:border-[#524B47] rounded-md transition-colors duration-150 ease-out cursor-pointer shadow-2xs"
+                        className="px-2.5 py-1 text-xs font-medium text-[#111113] dark:text-[#F2F0EB] hover:text-[#111113] bg-[#F7F7F5] dark:bg-[#0B0B0C] hover:bg-[#EAEAE7] dark:hover:bg-[#18181B] border border-[#E2E2E0] dark:border-[#2A2A2D] hover:border-[#8E8E93] dark:hover:border-[#3E3E42] rounded-md transition-colors duration-150 ease-out cursor-pointer shadow-2xs"
                     >
                         Edit
                     </button>
                     <button
                         onClick={()=>onDelete(task._id)}
-                        className="px-2.5 py-1 text-xs font-medium text-[#9CA3AF] dark:text-[#78716C] hover:text-[#B5541E] dark:hover:text-[#D97036] bg-white dark:bg-[#292524] hover:bg-[#B5541E]/10 dark:hover:bg-[#B5541E]/15 border border-[#E5E1D8] dark:border-[#3D3835] hover:border-[#B5541E]/30 dark:hover:border-[#B5541E]/40 rounded-md transition-colors duration-150 ease-out cursor-pointer shadow-2xs"
+                        className="px-2.5 py-1 text-xs font-medium text-[#71717A] dark:text-[#8E8E93] hover:text-[#FF3B30] dark:hover:text-[#FF3B30] bg-[#F7F7F5] dark:bg-[#0B0B0C] hover:bg-[#FF3B30]/10 dark:hover:bg-[#FF3B30]/15 border border-[#E2E2E0] dark:border-[#2A2A2D] hover:border-[#FF3B30]/30 dark:hover:border-[#FF3B30]/40 rounded-md transition-colors duration-150 ease-out cursor-pointer shadow-2xs"
                     >
                         Delete
                     </button>

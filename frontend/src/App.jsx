@@ -122,25 +122,25 @@ function App(){
   }))
 
   return(
-    <div className="max-w-2xl mx-auto px-4 py-8 sm:py-12 sm:px-6">
-      <div className="flex items-center justify-between mb-6">
+    <div className="max-w-xl mx-auto px-4 py-6 sm:py-10 sm:px-5">
+      <div className="flex items-center justify-between px-4 py-3 sm:px-5 sm:py-3.5 mb-6 rounded-lg bg-white dark:bg-[#18181B] border border-[#E2E2E0] dark:border-[#2A2A2D] shadow-xs">
         <div className="flex items-center gap-2.5">
-          <h1 className="font-heading text-2xl font-bold tracking-tight text-[#1F2937] dark:text-[#F5F5F4]">
+          <h1 className="font-heading text-xl sm:text-2xl font-bold tracking-tight text-[#111113] dark:text-[#F2F0EB]">
             TaskFlow
           </h1>
           <button
             onClick={() => setDarkMode(!darkMode)}
-            className="p-1.5 rounded-lg border border-[#E5E1D8] dark:border-[#3D3835] bg-white dark:bg-[#292524] text-[#1F2937] dark:text-[#E7E5E4] hover:bg-[#FAF7F2] dark:hover:bg-[#322E2B] transition-colors duration-150 ease-out cursor-pointer shadow-2xs"
+            className="p-1.5 rounded-md border border-[#E2E2E0] dark:border-[#2A2A2D] bg-[#F7F7F5] dark:bg-[#0B0B0C] text-[#111113] dark:text-[#F2F0EB] hover:border-[#FF3B30]/50 dark:hover:border-[#FF3B30]/50 transition-colors cursor-pointer"
             title={darkMode ? "Switch to light mode" : "Switch to dark mode"}
             aria-label="Toggle dark mode"
           >
             {darkMode ? (
-              <svg className="w-4 h-4 text-[#C99A2E]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+              <svg className="w-4 h-4 text-[#FFB020]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                 <circle cx="12" cy="12" r="5" />
                 <path strokeLinecap="round" d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
               </svg>
             ) : (
-              <svg className="w-4 h-4 text-[#78716C]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+              <svg className="w-4 h-4 text-[#71717A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
               </svg>
             )}
@@ -149,10 +149,10 @@ function App(){
         <div className="flex items-center gap-2">
           {userName ? (
             <>
-              <span className="text-sm text-[#1F2937] dark:text-[#F5F5F4]">Hi, {userName}</span>
+              <span className="text-xs sm:text-sm font-medium text-[#111113] dark:text-[#F2F0EB]">Hi, {userName}</span>
               <button
                 onClick={handleLogout}
-                className="px-3 py-1.5 text-xs font-medium rounded-lg border border-[#E5E1D8] dark:border-[#3D3835] bg-white dark:bg-[#292524] text-[#9CA3AF] dark:text-[#A8A29E] hover:text-[#B5541E] dark:hover:text-[#D97036] transition-colors cursor-pointer"
+                className="px-3 py-1.5 text-xs font-medium rounded-md border border-[#E2E2E0] dark:border-[#2A2A2D] bg-[#F7F7F5] dark:bg-[#0B0B0C] text-[#71717A] dark:text-[#8E8E93] hover:text-[#FF3B30] dark:hover:text-[#FF3B30] hover:border-[#FF3B30]/40 dark:hover:border-[#FF3B30]/40 transition-colors cursor-pointer"
               >
                 Logout
               </button>
@@ -161,20 +161,20 @@ function App(){
             <>
               <button
                 onClick={() => { setShowAuth('login') }}
-                className={`px-3 py-1.5 text-xs font-medium rounded-lg border transition-colors cursor-pointer ${
+                className={`px-3 py-1.5 text-xs font-medium rounded-md border transition-colors cursor-pointer ${
                   showAuth === 'login'
-                    ? 'bg-[#B5541E] text-white border-[#B5541E]'
-                    : 'bg-white dark:bg-[#292524] text-[#9CA3AF] dark:text-[#A8A29E] border-[#E5E1D8] dark:border-[#3D3835] hover:text-[#B5541E]'
+                    ? 'bg-[#FF3B30] text-white border-[#FF3B30]'
+                    : 'bg-[#F7F7F5] dark:bg-[#0B0B0C] text-[#71717A] dark:text-[#8E8E93] border-[#E2E2E0] dark:border-[#2A2A2D] hover:text-[#FF3B30] hover:border-[#FF3B30]/40'
                 }`}
               >
                 Login
               </button>
               <button
                 onClick={() => { setShowAuth('register') }}
-                className={`px-3 py-1.5 text-xs font-medium rounded-lg border transition-colors cursor-pointer ${
+                className={`px-3 py-1.5 text-xs font-medium rounded-md border transition-colors cursor-pointer ${
                   showAuth === 'register'
-                    ? 'bg-[#B5541E] text-white border-[#B5541E]'
-                    : 'bg-white dark:bg-[#292524] text-[#9CA3AF] dark:text-[#A8A29E] border-[#E5E1D8] dark:border-[#3D3835] hover:text-[#B5541E]'
+                    ? 'bg-[#FF3B30] text-white border-[#FF3B30]'
+                    : 'bg-[#F7F7F5] dark:bg-[#0B0B0C] text-[#71717A] dark:text-[#8E8E93] border-[#E2E2E0] dark:border-[#2A2A2D] hover:text-[#FF3B30] hover:border-[#FF3B30]/40'
                 }`}
               >
                 Register
@@ -189,9 +189,9 @@ function App(){
           {showAuth === 'login' ? (
             <>
               <Login onLogin={(name) => { setUserName(name); setShowAuth(null); fetchUserTasks() }} />
-              <p className="text-center text-xs text-[#9CA3AF] dark:text-[#78716C] mt-4">
+              <p className="text-center text-xs text-[#71717A] dark:text-[#8E8E93] mt-4">
                 Don't have an account?{' '}
-                <button onClick={() => setShowAuth('register')} className="text-[#B5541E] hover:underline cursor-pointer">
+                <button onClick={() => setShowAuth('register')} className="text-[#FF3B30] hover:underline font-medium cursor-pointer">
                   Register here
                 </button>
               </p>
@@ -199,9 +199,9 @@ function App(){
           ) : (
             <>
               <Register onRegister={(name) => { setUserName(name); setShowAuth(null); fetchUserTasks() }} />
-              <p className="text-center text-xs text-[#9CA3AF] dark:text-[#78716C] mt-4">
+              <p className="text-center text-xs text-[#71717A] dark:text-[#8E8E93] mt-4">
                 Already have an account?{' '}
-                <button onClick={() => setShowAuth('login')} className="text-[#B5541E] hover:underline cursor-pointer">
+                <button onClick={() => setShowAuth('login')} className="text-[#FF3B30] hover:underline font-medium cursor-pointer">
                   Login here
                 </button>
               </p>
@@ -212,9 +212,9 @@ function App(){
         <>
           <TaskForm onSubmit={handleFormSubmit} editingTask={editingTask} />
           <div className="flex items-center gap-1.5 mb-6">
-            <button onClick={() => setFilter('all')} className={`px-3.5 py-1.5 text-xs sm:text-sm rounded-lg transition-colors duration-150 ease-out cursor-pointer ${filter === 'all' ? 'bg-[#B5541E] text-white border border-[#B5541E] font-medium shadow-2xs' : 'bg-white dark:bg-[#292524] text-[#9CA3AF] dark:text-[#A8A29E] hover:text-[#1F2937] dark:hover:text-[#F5F5F4] hover:border-[#9CA3AF]/60 dark:hover:border-[#524B47] border border-[#E5E1D8] dark:border-[#3D3835]'}`}>All</button>
-            <button onClick={() => setFilter('pending')} className={`px-3.5 py-1.5 text-xs sm:text-sm rounded-lg transition-colors duration-150 ease-out cursor-pointer ${filter === 'pending' ? 'bg-[#B5541E] text-white border border-[#B5541E] font-medium shadow-2xs' : 'bg-white dark:bg-[#292524] text-[#9CA3AF] dark:text-[#A8A29E] hover:text-[#1F2937] dark:hover:text-[#F5F5F4] hover:border-[#9CA3AF]/60 dark:hover:border-[#524B47] border border-[#E5E1D8] dark:border-[#3D3835]'}`}>Pending</button>
-            <button onClick={() => setFilter('completed')} className={`px-3.5 py-1.5 text-xs sm:text-sm rounded-lg transition-colors duration-150 ease-out cursor-pointer ${filter === 'completed' ? 'bg-[#B5541E] text-white border border-[#B5541E] font-medium shadow-2xs' : 'bg-white dark:bg-[#292524] text-[#9CA3AF] dark:text-[#A8A29E] hover:text-[#1F2937] dark:hover:text-[#F5F5F4] hover:border-[#9CA3AF]/60 dark:hover:border-[#524B47] border border-[#E5E1D8] dark:border-[#3D3835]'}`}>Completed</button>
+            <button onClick={() => setFilter('all')} className={`px-3.5 py-1.5 text-xs sm:text-sm rounded-md transition-colors duration-150 ease-out cursor-pointer ${filter === 'all' ? 'bg-[#FF3B30] text-white border border-[#FF3B30] font-medium shadow-xs' : 'bg-white dark:bg-[#18181B] text-[#71717A] dark:text-[#8E8E93] hover:text-[#111113] dark:hover:text-[#F2F0EB] hover:border-[#8E8E93] dark:hover:border-[#71717A] border border-[#E2E2E0] dark:border-[#2A2A2D]'}`}>All</button>
+            <button onClick={() => setFilter('pending')} className={`px-3.5 py-1.5 text-xs sm:text-sm rounded-md transition-colors duration-150 ease-out cursor-pointer ${filter === 'pending' ? 'bg-[#FF3B30] text-white border border-[#FF3B30] font-medium shadow-xs' : 'bg-white dark:bg-[#18181B] text-[#71717A] dark:text-[#8E8E93] hover:text-[#111113] dark:hover:text-[#F2F0EB] hover:border-[#8E8E93] dark:hover:border-[#71717A] border border-[#E2E2E0] dark:border-[#2A2A2D]'}`}>Pending</button>
+            <button onClick={() => setFilter('completed')} className={`px-3.5 py-1.5 text-xs sm:text-sm rounded-md transition-colors duration-150 ease-out cursor-pointer ${filter === 'completed' ? 'bg-[#FF3B30] text-white border border-[#FF3B30] font-medium shadow-xs' : 'bg-white dark:bg-[#18181B] text-[#71717A] dark:text-[#8E8E93] hover:text-[#111113] dark:hover:text-[#F2F0EB] hover:border-[#8E8E93] dark:hover:border-[#71717A] border border-[#E2E2E0] dark:border-[#2A2A2D]'}`}>Completed</button>
           </div>
           <TaskList groups={sortedGroups} onDelete={handleDelete} onToggleComplete={handleToggleComplete} onEdit={handleEditClick} />
         </>

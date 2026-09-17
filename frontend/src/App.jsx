@@ -52,13 +52,40 @@ function App(){
   })
 
   return(
-    <div className="max-w-2xl mx-auto p-6">
-      <h1 className="text-2xl font-bold mb-4">TaskFlow</h1>
+    <div className="max-w-2xl mx-auto px-4 py-8 sm:py-12 sm:px-6">
+      <h1 className="text-xl sm:text-2xl font-semibold tracking-tight text-[#1F2937] mb-6">TaskFlow</h1>
       <TaskForm onSubmit={handleFormSubmit} editingTask={editingTask} />
-      <div className="flex gap-2 mb-4">
-        <button onClick={() => setFilter('all')} className="border rounded px-3 py-1">All</button>
-        <button onClick={() => setFilter('pending')} className="border rounded px-3 py-1">Pending</button>
-        <button onClick={() => setFilter('completed')} className="border rounded px-3 py-1">Completed</button>
+      <div className="flex items-center gap-1.5 mb-5">
+        <button
+          onClick={() => setFilter('all')}
+          className={`px-3 py-1.5 text-xs sm:text-sm rounded-lg transition-colors duration-150 cursor-pointer ${
+            filter === 'all'
+              ? 'bg-[#B5541E] text-white border border-[#B5541E] font-medium shadow-2xs'
+              : 'bg-white text-[#9CA3AF] hover:text-[#1F2937] hover:border-[#9CA3AF]/60 border border-[#E5E1D8]'
+          }`}
+        >
+          All
+        </button>
+        <button
+          onClick={() => setFilter('pending')}
+          className={`px-3 py-1.5 text-xs sm:text-sm rounded-lg transition-colors duration-150 cursor-pointer ${
+            filter === 'pending'
+              ? 'bg-[#B5541E] text-white border border-[#B5541E] font-medium shadow-2xs'
+              : 'bg-white text-[#9CA3AF] hover:text-[#1F2937] hover:border-[#9CA3AF]/60 border border-[#E5E1D8]'
+          }`}
+        >
+          Pending
+        </button>
+        <button
+          onClick={() => setFilter('completed')}
+          className={`px-3 py-1.5 text-xs sm:text-sm rounded-lg transition-colors duration-150 cursor-pointer ${
+            filter === 'completed'
+              ? 'bg-[#B5541E] text-white border border-[#B5541E] font-medium shadow-2xs'
+              : 'bg-white text-[#9CA3AF] hover:text-[#1F2937] hover:border-[#9CA3AF]/60 border border-[#E5E1D8]'
+          }`}
+        >
+          Completed
+        </button>
       </div>
       <TaskList tasks={filteredTasks} onDelete={handleDelete} onToggleComplete={handleToggleComplete} onEdit={handleEditClick} />
     </div>

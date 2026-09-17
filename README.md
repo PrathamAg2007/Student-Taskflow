@@ -1,34 +1,37 @@
 # TaskFlow — Student Task Management App
 
-A full-stack task management application built for Lunorsoft's Full Stack Developer internship assignment (Round 1).
+Built for Lunorsoft's Full Stack Developer internship assignment (Round 1).
 
 ## Live Links
-- Frontend: https://student-taskflow-red.vercel.app
-- Backend API: https://student-taskflow.onrender.com/api/v1/tasks
+- App: https://student-taskflow-red.vercel.app
+- API: https://student-taskflow.onrender.com/api/v1/tasks
 
-Note: the backend is hosted on Render's free tier, which spins down after inactivity. The first request after idle time may take 30–60 seconds to respond — this is expected, not a bug.
+Heads up — backend's on Render's free tier, so it spins down when idle. First request after a while might take 30-60 seconds to wake up. Not a bug, just how free hosting works.
 
-## Features
-- Create, edit, delete, and mark tasks as complete
-- Filter tasks by All / Pending / Completed
-- Tasks grouped and sorted by due date
-- Fully responsive UI
+## What it does
+- Register/login (JWT-based auth) — your tasks are tied to your account
+- Create, edit, delete tasks, mark them complete
+- Filter by All / Pending / Completed
+- Tasks grouped by due date, sorted chronologically, and ordered by priority within the same day
+- Dark mode toggle
+- Form validation (Joi on the backend, inline validation on the frontend)
+- Responsive layout
 
 ## Tech Stack
 - Frontend: React (Vite), Tailwind CSS
-- Backend: Node.js, Express
+- Backend: Node.js, Express, JWT, Joi, bcrypt
 - Database: MongoDB (Atlas)
-- Deployment: Vercel (frontend), Render (backend)
+- Hosted on Vercel (frontend) + Render (backend)
 
-## Architecture
-Frontend and backend are separate apps in one repo (`frontend/` and `backend/`), communicating over a REST API. The frontend holds task state in React and calls the backend's CRUD endpoints (`/api/v1/tasks`) via fetch. The backend handles validation, database operations via Mongoose, and returns JSON.
+## How it's built
+Two separate apps in one repo — `frontend/` and `backend/` — talking over a REST API. Frontend holds everything in React state and hits the backend's endpoints for tasks and auth. Every task request needs a valid JWT in the header; the backend checks it and only ever returns tasks belonging to that user, so accounts can't see each other's data.
 
-## Running Locally
-See `backend/README.md` and `frontend/README.md` for setup instructions for each half. Both need to be running simultaneously for the app to work locally.
+## Running it locally
+Check `backend/README.md` and `frontend/README.md` — both need to be running at the same time for it to actually work.
 
-## AI Tools Used
-Claude was used throughout development - for architectural guidance, debugging and for the final visual styling pass (CSS/Tailwind classes only). All component logic, state management, and API integration were written and understood by me. AI was used as a guide and pair-debugging tool, not to generate the application unsupervised.
+## AI tools used
+Used Claude and Antigravity throughout — not to generate the app blind, but as a build partner. Claude helped with architecture decisions, debugging (CORS, env vars, deployment issues), and general direction. Antigravity handled the visual styling pass, helped wire the auth flow into the frontend (login/register state, protected routes, token handling), and built out the date-grouping feature. All the core logic — CRUD, state management, API integration — I wrote and understand myself, and can walk through any of it.
 
-## Known Limitations
-- No "cancel edit" button — clicking Edit populates the form, but there's currently no way to back out without submitting or refreshing
-- No authentication (tasks are not user-scoped)
+## Known limitations
+- No "cancel edit" button once you click Edit on a task
+- No password reset flow

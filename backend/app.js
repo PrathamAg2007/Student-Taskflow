@@ -13,9 +13,23 @@ const authMiddleware = require('./middleware/authentication')
 const notFoundMiddleware = require('./middleware/not-found');
 const errorHandlerMiddleware = require('./middleware/error-handler');
 
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://student-taskflow-red.vercel.app'
+]
+
 app.use(express.json());
 
-app.use(cors({origin: "https://student-taskflow-red.vercel.app"})) //{origin: "https://student-taskflow-red.vercel.app"}
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}))
+
 // routes
 app.use('/api/v1/auth', AuthRouter)
 app.use('/api/v1/tasks', authMiddleware, TasksRouter)

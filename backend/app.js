@@ -13,7 +13,7 @@ const errorHandlerMiddleware = require('./middleware/error-handler');
 
 app.use(express.json());
 
-app.use(cors()) //{origin: "https://student-taskflow-red.vercel.app"}
+app.use(cors({origin: "https://student-taskflow-red.vercel.app"})) //{origin: "https://student-taskflow-red.vercel.app"}
 // routes
 app.use('/api/v1/auth', AuthRouter)
 app.use('/api/v1/tasks', TasksRouter)
